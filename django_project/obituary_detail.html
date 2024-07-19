@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ obituary.name }} - Obituary</title>
+    <meta name="description" content="{{ obituary.content|truncatewords:20 }}">
+    <meta name="keywords" content="obituary, {{ obituary.name }}, {{ obituary.author }}">
+    <meta property="og:title" content="{{ obituary.name }} - Obituary">
+    <meta property="og:description" content="{{ obituary.content|truncatewords:20 }}">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/obituary/{{ obituary.slug }}">
+</head>
+<body>
+    <h1>{{ obituary.name }} - Obituary</h1>
+    <p>Published on {{ obituary.submission_date }}</p>
+    <p>{{ obituary.content }}</p>
+    <p>By {{ obituary.author }}</p>
+    <div>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/obituary/{{ obituary.slug }}" target="_blank">Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https://example.com/obituary/{{ obituary.slug }}&text={{ obituary.name }} - Obituary" target="_blank">Share on Twitter</a>
+    </div>
+</body>
+</html>

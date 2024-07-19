@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Obituary</title>
+    <style>
+        /* Add some basic styling to make the form look decent */
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Submit Obituary</h1>
+    <form method="post" action="{% url 'ubmit_obituary' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth"><br><br>
+        <label for="date_of_death">Date of Death:</label>
+        <input type="date" id="date_of_death" name="date_of_death"><br><br>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content"></textarea><br><br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author"><br><br>
+        <input type="submit" value="Submit Obituary">
+    </form>
+    <script>
+        // Add some basic JavaScript validation to ensure required fields are filled
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                const name = document.querySelector("#name").value;
+                const dateOfBirth = document.querySelector("#date_of_birth").value;
+                const dateOfDeath = document.querySelector("#date_of_death").value;
+                const content = document.querySelector("#content").value;
+                const author = document.querySelector("#author").value;
+                if (!name ||!dateOfBirth ||!dateOfDeath ||!content ||!author) {
+                    alert("Please fill in all required fields.");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

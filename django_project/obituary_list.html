@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obituaries</title>
+    <style>
+        /* Add some basic styling to make the table look decent */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Obituaries</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Date of Death</th>
+            <th>Content</th>
+            <th>Author</th>
+        </tr>
+        {% for obituary in obituaries %}
+        <tr>
+            <td>{{ obituary.name }}</td>
+            <td>{{ obituary.date_of_birth }}</td>
+            <td>{{ obituary.date_of_death }}</td>
+            <td>{{ obituary.content }}</td>
+            <td>{{ obituary.author }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
